@@ -1,0 +1,2578 @@
+/*=========================================================
+    RESET
+=========================================================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box; 
+}
+
+html,
+body{
+
+    width:100%;
+    height:100%;
+
+    overflow:hidden;
+
+    background:#000;
+
+    font-family:
+    "Trebuchet MS",
+    Arial,
+    sans-serif;
+
+}
+
+/*=========================================================
+    CANVAS
+=========================================================*/
+
+#bgCanvas{
+
+    position:fixed;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    z-index:1;
+
+}
+
+/*=========================================================
+    APP
+=========================================================*/
+
+#app{
+
+    position:relative;
+
+    width:100%;
+    height:100%;
+
+    z-index:5;
+
+}
+
+/*=========================================================
+    SCENES
+=========================================================*/
+
+.scene{
+
+    position:absolute;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.scene.active{
+
+    display:flex;
+
+}
+
+/*=========================================================
+    INTRO
+=========================================================*/
+
+.intro-container{
+
+    position:relative;
+
+    text-align:center;
+
+    z-index:20;
+
+}
+
+/*=========================================================
+    GLOW
+=========================================================*/
+
+.glow-circle{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:320px;
+    height:320px;
+
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:
+
+    radial-gradient(
+
+        circle,
+
+        rgba(255,170,230,.20),
+
+        rgba(255,120,200,.08),
+
+        transparent 70%
+
+    );
+
+    filter:blur(45px);
+
+    animation:glowPulse 5s ease-in-out infinite;
+
+}
+
+/*=========================================================
+    TITLE
+=========================================================*/
+
+#touchText{
+
+    position:relative;
+
+    color:white;
+
+    font-size:4rem;
+
+    font-weight:300;
+
+    letter-spacing:4px;
+
+    cursor:pointer;
+
+    user-select:none;
+
+    text-shadow:
+
+    0 0 12px white,
+
+    0 0 30px #ff89d4,
+
+    0 0 60px #ff4fae;
+
+    transition:
+
+    transform .4s,
+
+    letter-spacing .4s,
+
+    text-shadow .4s;
+
+}
+
+#touchText:hover{
+
+    transform:scale(1.05);
+
+    letter-spacing:8px;
+
+}
+
+/*=========================================================
+    SUBTITLE
+=========================================================*/
+
+.intro-container p{
+
+    margin-top:25px;
+
+    color:#dddddd;
+
+    font-size:1.1rem;
+
+    letter-spacing:3px;
+
+    opacity:.8;
+
+}
+
+/*=========================================================
+    FADE
+=========================================================*/
+
+.fadeOut{
+
+    animation:fadeOut 1.4s forwards;
+
+}
+
+.fadeIn{
+
+    animation:fadeIn 1.4s forwards;
+
+}
+
+/*=========================================================
+    ANIMATIONS
+=========================================================*/
+
+@keyframes glowPulse{
+
+    0%{
+
+        transform:
+        translate(-50%,-50%)
+        scale(.9);
+
+        opacity:.4;
+
+    }
+
+    50%{
+
+        transform:
+        translate(-50%,-50%)
+        scale(1.15);
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:
+        translate(-50%,-50%)
+        scale(.9);
+
+        opacity:.4;
+
+    }
+
+}
+
+@keyframes fadeOut{
+
+    to{
+
+        opacity:0;
+
+        transform:scale(1.08);
+
+    }
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+/*=========================================================
+    RESPONSIVE
+=========================================================*/
+
+@media(max-width:768px){
+
+#touchText{
+
+    font-size:2.4rem;
+
+}
+
+.intro-container p{
+
+    width:90%;
+
+    margin:auto;
+
+    margin-top:20px;
+
+    font-size:.95rem;
+
+}
+
+}
+
+/*=========================================================
+    PLANET SYSTEM
+=========================================================*/
+
+#spaceGlow{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    radial-gradient(circle,
+    rgba(255,120,210,.15),
+    transparent 70%);
+
+    filter:blur(80px);
+
+}
+
+#planetSystem{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:700px;
+    height:700px;
+
+    transform:translate(-50%,-50%);
+
+}
+
+#planetAura{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:520px;
+    height:520px;
+
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(circle,
+    rgba(255,120,220,.18),
+    rgba(255,120,220,.06),
+    transparent 70%);
+
+    filter:blur(50px);
+
+}
+/*=========================================================
+    PLANET
+=========================================================*/
+
+#planet{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:340px;
+    height:340px;
+
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    background:
+    radial-gradient(circle at 30% 28%,
+    #ffd4ef 0%,
+    #ff8ccf 12%,
+    #d82f84 35%,
+    #7a1147 65%,
+    #350018 100%);
+
+    box-shadow:
+
+    0 0 70px rgba(255,120,210,.75),
+
+    0 0 180px rgba(255,120,210,.40);
+
+}
+
+/*=========================================================
+    CLOUDS
+=========================================================*/
+
+#cloudLayer{
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    animation: cloudRotate 45s linear infinite;
+
+}
+
+.planetCloud{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(circle at 30% 30%,
+    rgba(255,255,255,.95),
+    rgba(255,215,240,.75),
+    rgba(255,170,220,.35),
+    transparent 80%);
+
+    filter:blur(14px);
+
+    opacity:.85;
+
+}
+
+.c1{
+
+    width:120px;
+    height:55px;
+
+    top:40px;
+    left:35px;
+
+}
+
+.c2{
+
+    width:95px;
+    height:45px;
+
+    top:75px;
+    right:45px;
+
+}
+
+.c3{
+
+    width:150px;
+    height:60px;
+
+    top:130px;
+    left:60px;
+
+}
+
+.c4{
+
+    width:90px;
+    height:40px;
+
+    top:180px;
+    right:35px;
+
+}
+
+.c5{
+
+    width:135px;
+    height:55px;
+
+    bottom:95px;
+    left:45px;
+
+}
+
+.c6{
+
+    width:105px;
+    height:48px;
+
+    bottom:55px;
+    right:55px;
+
+}
+
+.c7{
+
+    width:80px;
+    height:35px;
+
+    top:235px;
+    left:120px;
+
+}
+
+.c8{
+
+    width:75px;
+    height:32px;
+
+    top:95px;
+    left:170px;
+
+}
+
+.planetHighlight{
+
+    position:absolute;
+
+    width:120px;
+    height:120px;
+
+    left:35px;
+    top:25px;
+
+    border-radius:50%;
+
+    background:
+
+    radial-gradient(circle,
+
+    rgba(255,255,255,.75),
+
+    transparent 75%);
+
+}
+/*=========================================================
+    PLANET RINGS
+=========================================================*/
+
+.planetRing{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:620px;
+    height:150px;
+
+    transform:translate(-50%,-50%) rotate(-18deg);
+
+    border-radius:50%;
+
+    border:8px solid rgba(255,170,235,.85);
+
+    box-shadow:
+
+    0 0 20px rgba(255,170,235,.9),
+
+    0 0 45px rgba(255,120,210,.6);
+
+}
+.ringBack{
+
+    z-index:1;
+
+    opacity:.45;
+
+}
+
+.ringFront{
+
+    z-index:5;
+
+    clip-path:inset(50% 0 0 0);
+
+}
+@keyframes cloudRotate{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+/*=========================================================
+    SPACE NEBULA
+=========================================================*/
+
+#nebula{
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:0;
+
+}
+
+.nebulaBlob{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    filter:blur(120px);
+
+    opacity:.18;
+
+    animation:nebulaFloat 18s ease-in-out infinite;
+
+}
+
+.n1{
+
+    width:420px;
+    height:420px;
+
+    left:-120px;
+    top:80px;
+
+    background:#ff5fb8;
+
+}
+
+.n2{
+
+    width:520px;
+    height:520px;
+
+    right:-180px;
+    top:180px;
+
+    background:#b86bff;
+
+    animation-delay:-6s;
+
+}
+
+.n3{
+
+    width:350px;
+    height:350px;
+
+    left:45%;
+    bottom:-120px;
+
+    background:#ff89d7;
+
+    animation-delay:-12s;
+
+}
+
+@keyframes nebulaFloat{
+
+    0%,100%{
+
+        transform:
+        translateY(0)
+        scale(1);
+
+    }
+
+    50%{
+
+        transform:
+        translateY(-25px)
+        scale(1.08);
+
+    }
+
+}
+/*=========================================================
+    WHITE FLASH
+=========================================================*/
+
+#whiteFlash{
+
+    position:fixed;
+
+    inset:0;
+
+    background:white;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    z-index:9999;
+
+    transition:opacity .9s ease;
+
+}
+
+#scene3{
+    background:transparent;
+}
+
+#memoryScene{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:20;
+    background:transparent;
+}
+
+#memoryTitle{
+    color:white;
+    font-size:48px;
+    font-weight:300;
+    letter-spacing:5px;
+    margin-bottom:80px;
+    text-shadow:0 0 20px white, 0 0 40px #ff8fd3;
+}
+
+#memoryContainer{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    width:900px;
+    height:600px;
+}
+
+.memoryOrb{
+    position:absolute;
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    cursor:pointer;
+    background:radial-gradient(circle, #fff, #ffc7ea, #ff70bb);
+    box-shadow:0 0 20px white, 0 0 40px #ff85cb, 0 0 80px #ff85cb;
+    animation:orbFloat 4s ease-in-out infinite;
+}
+
+.memoryOrb:hover{
+    transform:scale(1.25);
+    filter:brightness(1.5);
+}
+
+#memoryViewer{
+    position:fixed;
+    inset:0;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    background:rgba(0,0,0,.88);
+    z-index:100;
+}
+
+#memoryCard{
+    width:700px;
+    background:#111;
+    border-radius:25px;
+    padding:30px;
+    text-align:center;
+    border:1px solid rgba(255,255,255,.15);
+    transform:translateY(80px) scale(.8);
+    opacity:0;
+    transition:transform .8s cubic-bezier(.18,.89,.32,1.28), opacity .6s ease;
+}
+
+#memoryCard.show{
+    transform:translateY(0) scale(1);
+    opacity:1;
+}
+
+#memoryGif{
+    width:100%;
+    border-radius:20px;
+}
+
+#memoryText{
+    margin-top:25px;
+    color:white;
+    font-size:22px;
+    line-height:1.7;
+}
+
+#closeMemory{
+
+    margin-top:35px;
+
+    padding:18px 55px;
+
+    font-size:22px;
+
+    font-weight:600;
+
+    border:none;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+#closeMemory:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:0 0 25px rgba(255,255,255,.6);
+
+}
+
+@keyframes orbFloat{
+    0%{ transform:translateY(0px); }
+    50%{ transform:translateY(-18px); }
+    100%{ transform:translateY(0px); }
+}
+/*==========================
+      HEART GAME
+==========================*/
+
+#heartGame{
+
+    position:relative;
+
+    width:100%;
+
+    height:100vh;
+
+    overflow:hidden;
+
+}
+
+#heartContainer{
+
+    position:absolute;
+
+    inset:0;
+
+}
+
+#heartPlayer{
+
+    position:absolute;
+
+    bottom:35px;
+
+    left:50%;
+
+    width:90px;
+
+    height:90px;
+
+    transform:translateX(-50%);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:80px;
+
+    filter:drop-shadow(0 0 25px deeppink);
+
+    animation:playerBeat 1s infinite;
+
+    z-index:15;
+
+}
+
+#heartPlayer::before{
+
+    content:"💖";
+
+}
+
+@keyframes playerBeat{
+
+    0%,100%{
+
+        filter:drop-shadow(0 0 20px deeppink);
+
+    }
+
+    50%{
+
+        filter:drop-shadow(0 0 40px hotpink);
+
+    }
+
+}
+
+#scoreBoard,
+#goalBoard,
+#timeBoard{
+
+    position:absolute;
+
+    color:white;
+
+    font-size:26px;
+
+    font-weight:bold;
+
+    text-shadow:0 0 12px hotpink;
+
+    z-index:20;
+
+}
+
+#scoreBoard{
+
+    left:35px;
+
+    top:30px;
+
+}
+
+#goalBoard{
+
+    left:35px;
+
+    top:75px;
+
+}
+
+#timeBoard{
+
+    right:35px;
+
+    top:30px;
+
+}
+.fallHeart{
+
+    position:absolute;
+
+    top:-40px;
+
+    font-size:40px;
+
+    filter:drop-shadow(0 0 10px hotpink);
+
+    pointer-events:none;
+
+}
+.fallHeart.normal{
+
+    filter:drop-shadow(0 0 15px hotpink);
+
+}
+
+.fallHeart.gold{
+
+    filter:drop-shadow(0 0 18px gold);
+
+}
+
+.fallHeart.broken{
+
+    filter:drop-shadow(0 0 18px red);
+
+}
+.heartPop{
+
+    position:absolute;
+
+    font-size:28px;
+
+    pointer-events:none;
+
+    animation:popEffect .4s forwards;
+
+}
+
+@keyframes popEffect{
+
+    0%{
+
+        transform:scale(.5);
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:scale(2.2);
+
+        opacity:0;
+
+    }
+
+}
+
+#scene5{
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:25px;
+
+}
+
+#scene5 h1{
+
+    font-size:70px;
+    color:white;
+    text-shadow:0 0 25px hotpink;
+
+}
+
+#scene5 p{
+
+    font-size:24px;
+    color:white;
+
+}
+
+#nextGameBtn{
+
+    padding:18px 45px;
+
+    border:none;
+
+    border-radius:40px;
+
+    font-size:24px;
+
+    cursor:pointer;
+
+    background:linear-gradient(45deg,#ff5fa2,#ff8cc8);
+
+    color:white;
+
+    transition:.25s;
+
+}
+
+#nextGameBtn:hover{
+
+    transform:scale(1.08);
+
+}
+
+/* FIND MEMORIES - ANA ALAN */
+
+#findGame{
+    position:relative;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+
+    background:
+    radial-gradient(
+        circle at 50% 45%,
+        rgba(65,25,100,.35),
+        transparent 42%
+    );
+}
+
+#findTitle{
+    position:absolute;
+    top:35px;
+    left:50%;
+    transform:translateX(-50%);
+
+    z-index:50;
+
+    color:white;
+    font-size:42px;
+
+    text-shadow:
+    0 0 12px #ff8fd8,
+    0 0 30px #8d5cff;
+}
+
+#findTargets{
+    position:absolute;
+
+    top:105px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:flex;
+    gap:25px;
+
+    padding:12px 25px;
+
+    border:1px solid rgba(255,255,255,.2);
+
+    border-radius:30px;
+
+    background:rgba(10,5,25,.45);
+
+    backdrop-filter:blur(10px);
+
+    z-index:50;
+}
+
+#findTargets span{
+    font-size:30px;
+    transition:.35s;
+}
+
+#findArea{
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    overflow:hidden;
+}
+/* FIND MEMORIES - UZAY DEKORLARI */
+
+/* Mor uzay bulutları */
+
+.findNebula{
+    position:absolute;
+
+    width:420px;
+    height:260px;
+
+    border-radius:50%;
+
+    filter:blur(55px);
+
+    opacity:.30;
+
+    pointer-events:none;
+}
+
+.nebulaOne{
+    top:190px;
+    left:-100px;
+
+    background:#a13cff;
+
+    transform:rotate(-20deg);
+}
+
+.nebulaTwo{
+    right:-120px;
+    bottom:70px;
+
+    background:#ff3ca6;
+
+    transform:rotate(25deg);
+}
+
+
+/* Büyük gezegenler */
+
+.findPlanet{
+    position:absolute;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    box-shadow:
+
+    inset -25px -25px 45px
+    rgba(0,0,0,.7),
+
+    inset 15px 15px 30px
+    rgba(255,255,255,.25),
+
+    0 0 50px
+    rgba(170,80,255,.35);
+}
+
+
+/* Sağdaki büyük pembe gezegen */
+
+.findPlanetOne{
+    width:230px;
+    height:230px;
+
+    top:220px;
+    right:-55px;
+
+    background:
+
+    radial-gradient(
+        circle at 30% 25%,
+        #ffb2e5,
+        #a83cff 45%,
+        #25104a 75%
+    );
+}
+
+
+/* Gezegenin halkası */
+
+.findPlanetOne::after{
+    content:"";
+
+    position:absolute;
+
+    width:310px;
+    height:70px;
+
+    left:-40px;
+    top:75px;
+
+    border:
+
+    8px solid
+    rgba(255,180,240,.45);
+
+    border-radius:50%;
+
+    transform:
+    rotate(-18deg);
+}
+
+
+/* Soldaki küçük mavi gezegen */
+
+.findPlanetTwo{
+    width:150px;
+    height:150px;
+
+    left:-45px;
+    bottom:80px;
+
+    background:
+
+    radial-gradient(
+        circle at 30% 25%,
+        #b9f3ff,
+        #2870d8 50%,
+        #111d52 80%
+    );
+}
+/* FIND MEMORIES - UYDULAR VE YILDIZLAR */
+
+/* Küçük uydular */
+
+.findMoon{
+    position:absolute;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    background:
+
+    radial-gradient(
+        circle at 30% 25%,
+        #ffffff,
+        #b8a9d8 55%,
+        #4c3c72
+    );
+
+    box-shadow:
+    0 0 25px
+    rgba(255,255,255,.3);
+}
+
+
+/* Sol üstteki uydu */
+
+.moonOne{
+    width:70px;
+    height:70px;
+
+    top:300px;
+    left:250px;
+}
+
+
+/* Sağ alttaki küçük uydu */
+
+.moonTwo{
+    width:48px;
+    height:48px;
+
+    right:310px;
+    bottom:150px;
+}
+
+
+/* Yıldız kümeleri */
+
+.findStarCluster{
+    position:absolute;
+
+    color:white;
+
+    font-size:28px;
+
+    letter-spacing:12px;
+
+    opacity:.70;
+
+    text-shadow:
+
+    0 0 10px white,
+
+    0 0 20px #c57cff;
+
+    pointer-events:none;
+}
+
+
+/* Sol üst yıldız kümesi */
+
+.clusterOne{
+    top:210px;
+    left:380px;
+}
+
+
+/* Sağ orta yıldız kümesi */
+
+.clusterTwo{
+    right:350px;
+    top:480px;
+}
+
+
+/* Alt orta yıldız kümesi */
+
+.clusterThree{
+    left:480px;
+    bottom:90px;
+}
+/* FIND MEMORIES - UZAY BULUTLARI */
+
+.findCloud{
+    position:absolute;
+
+    width:220px;
+    height:70px;
+
+    border-radius:50%;
+
+    background:
+    rgba(255,180,245,.08);
+
+    filter:blur(18px);
+
+    pointer-events:none;
+}
+
+.cloudOne{
+    top:430px;
+    left:90px;
+
+    transform:
+    rotate(-15deg);
+}
+
+.cloudTwo{
+    right:100px;
+    top:170px;
+
+    transform:
+    rotate(20deg);
+}
+
+
+/* FIND MEMORIES - GİZLİ OBJELER */
+
+.findObject{
+    position:absolute;
+
+    font-size:38px;
+
+    cursor:pointer;
+
+    user-select:none;
+
+    opacity:.55;
+
+    filter:
+
+    drop-shadow(
+        0 0 5px
+        rgba(255,255,255,.35)
+    );
+
+    transition:
+
+    transform .3s,
+
+    opacity .3s,
+
+    filter .3s;
+
+    z-index:20;
+}
+
+
+/* Fare objenin üstüne gelince */
+
+.findObject:hover{
+    opacity:1;
+
+    transform:
+
+    scale(1.2)
+
+    rotate(8deg);
+
+    filter:
+
+    drop-shadow(
+        0 0 14px white
+    );
+}
+/* =================================
+           ONE LAST HUG
+================================= */
+
+#hugGame{
+
+    position:relative;
+
+    width:100%;
+
+    height:100%;
+
+    overflow:hidden;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    background:
+
+    radial-gradient(
+        circle at 50% 65%,
+        rgba(255,80,180,.18),
+        transparent 40%
+    );
+
+}
+
+
+/* Başlık */
+
+#hugTitle{
+
+    position:absolute;
+
+    top:45px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    margin:0;
+
+    color:white;
+
+    font-size:46px;
+
+    text-shadow:
+
+    0 0 12px #ff8fda,
+
+    0 0 35px #a75cff;
+
+    z-index:10;
+
+}
+
+
+/* Açıklama */
+
+#hugText{
+
+    position:absolute;
+
+    top:110px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    margin:0;
+
+    color:
+
+    rgba(255,255,255,.8);
+
+    font-size:20px;
+
+    z-index:10;
+
+}
+
+
+/* Oyun alanı */
+
+#hugArea{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+}
+
+
+/* Hareket eden kalp */
+
+#hugYou{
+
+    position:absolute;
+
+    left:15%;
+
+    bottom:18%;
+
+    font-size:90px;
+
+    cursor:pointer;
+
+    user-select:none;
+
+    filter:
+
+    drop-shadow(
+        0 0 25px
+        deeppink
+    );
+
+    transition:
+
+    transform .2s;
+
+    z-index:20;
+
+}
+
+
+/* Bekleyen kalp */
+
+#hugYu{
+
+    position:absolute;
+
+    right:15%;
+
+    bottom:18%;
+
+    font-size:90px;
+
+    user-select:none;
+
+    filter:
+
+    drop-shadow(
+        0 0 25px
+        white
+    );
+
+    animation:
+
+    hugWaiting 1.3s ease-in-out infinite;
+
+    z-index:20;
+
+}
+
+
+/* Bekleyen kalbin hareketi */
+
+@keyframes hugWaiting{
+
+    0%,
+    100%{
+
+        transform:
+
+        scale(1);
+
+    }
+
+    50%{
+
+        transform:
+
+        scale(1.15);
+
+    }
+
+}
+/* ONE LAST HUG - KALPLERİ DÜZELT */
+
+#hugYou,
+#hugYu{
+
+    width:100px;
+
+    height:100px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    line-height:1;
+
+    font-family:
+    "Segoe UI Emoji",
+    "Apple Color Emoji",
+    sans-serif;
+
+}
+
+
+/* Parlak pembe kalp */
+
+#hugYou{
+
+    font-size:82px;
+
+    text-shadow:
+
+    0 0 12px #ff4db8,
+
+    0 0 30px #ff4db8,
+
+    0 0 55px #ff8bd5;
+
+}
+
+
+/* Normal kırmızı kalp */
+
+#hugYu{
+
+    font-size:78px;
+
+    text-shadow:
+
+    0 0 10px rgba(255,60,90,.5);
+
+}
+/* ONE LAST HUG - MESAJLARI BÜYÜT */
+
+#hugText{
+
+    font-size:38px;
+
+    font-weight:900;
+
+    color:#ff4fb7;
+
+    text-align:center;
+
+    width:100%;
+
+    text-shadow:
+
+    0 0 8px #ff8bd5,
+
+    0 0 20px #ff3fae,
+
+    0 0 40px #ff3fae;
+
+    letter-spacing:1px;
+
+    z-index:100;
+
+}
+/* =================================
+          GOODBYE - FİNAL SAHNESİ
+================================= */
+
+#goodbyeScene{
+
+    position:relative;
+
+    width:100%;
+
+    height:100%;
+
+    min-height:100vh;
+
+    overflow:hidden;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    background:
+
+    radial-gradient(
+        circle at 50% 45%,
+        rgba(255,70,175,.18),
+        transparent 35%
+    );
+
+}
+
+
+/* Ortadaki yazıların alanı */
+
+#goodbyeContent{
+
+    position:relative;
+
+    z-index:10;
+
+    width:min(900px,90%);
+
+    padding-bottom:80px;
+
+}
+
+
+/* İlk büyük yazı */
+
+#goodbyeTitle{
+
+    margin:0;
+
+    color:#ff75c8;
+
+    font-size:clamp(40px,5vw,72px);
+
+    line-height:1.2;
+
+    text-shadow:
+
+    0 0 10px #ff9cda,
+
+    0 0 30px #ff3fae,
+
+    0 0 65px rgba(255,63,174,.7);
+
+}
+
+
+/* İkinci yazı */
+
+#goodbyeMessage{
+
+    margin:
+
+    35px auto 0;
+
+    max-width:700px;
+
+    color:
+
+    rgba(255,255,255,.9);
+
+    font-size:
+
+    clamp(20px,2vw,29px);
+
+    line-height:1.6;
+
+    text-shadow:
+
+    0 0 15px
+
+    rgba(255,255,255,.35);
+
+}
+
+
+/* Son veda yazısı */
+
+#goodbyeFinal{
+
+    margin-top:55px;
+
+    color:#ffc2e8;
+
+    font-size:
+
+    clamp(24px,2.7vw,38px);
+
+    font-weight:bold;
+
+    text-shadow:
+
+    0 0 12px #ff69bd,
+
+    0 0 35px #ff3fae;
+
+}
+   
+/* GOODBYE - YAZILARIN SIRALI GİRİŞİ */
+
+#goodbyeTitle,
+#goodbyeMessage,
+#goodbyeFinal{
+
+    opacity:0;
+
+    transform:
+
+    translateY(30px);
+
+}
+
+
+/* İlk yazı */
+
+#goodbyeTitle{
+
+    animation:
+
+    goodbyeAppear
+
+    1.5s ease forwards;
+
+    animation-delay:
+
+    .5s;
+
+}
+
+
+/* İkinci yazı */
+
+#goodbyeMessage{
+
+    animation:
+
+    goodbyeAppear
+
+    1.5s ease forwards;
+
+    animation-delay:
+
+    2.5s;
+
+}
+
+
+/* Son veda yazısı */
+
+#goodbyeFinal{
+
+    animation:
+
+    goodbyeAppear
+
+    1.5s ease forwards;
+
+    animation-delay:
+
+    4.8s;
+
+}
+
+
+/* Yazıların yavaşça görünmesi */
+
+@keyframes goodbyeAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+        translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+        translateY(0);
+
+    }
+
+}
+/* GOODBYE - YÜKSELEN KALPLER */
+
+.goodbyeHeart{
+
+    position:absolute;
+
+    bottom:-80px;
+
+    font-size:28px;
+
+    pointer-events:none;
+
+    opacity:0;
+
+    z-index:5;
+
+    animation:
+
+    goodbyeHeartFloat
+
+    linear forwards;
+
+}
+
+
+/* Kalpler yukarı doğru çıksın */
+
+@keyframes goodbyeHeartFloat{
+
+    0%{
+
+        opacity:0;
+
+        transform:
+
+        translateY(0)
+
+        scale(.5)
+
+        rotate(0deg);
+
+    }
+
+
+    15%{
+
+        opacity:.9;
+
+    }
+
+
+    80%{
+
+        opacity:.8;
+
+    }
+
+
+    100%{
+
+        opacity:0;
+
+        transform:
+
+        translateY(-115vh)
+
+        scale(1.4)
+
+        rotate(180deg);
+
+    }
+
+}
+/* MADE BY YAZISI - SAYFANIN EN ALTINDA */
+
+#madeBy{
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:28px;
+
+    transform:translateX(-50%);
+
+    width:100%;
+
+    margin:0;
+
+    text-align:center;
+
+    font-size:22px;
+
+    font-weight:600;
+
+    color:rgba(255,255,255,.8);
+
+    text-shadow:
+
+    0 0 10px #ff8bd5,
+
+    0 0 25px #ff4fb7;
+
+    z-index:20;
+
+}
+/* =========================================
+   TÜM CİHAZLAR - TABLET / IPAD / TELEFON
+========================================= */
+
+html,
+body{
+
+    width:100%;
+
+    height:100%;
+
+    margin:0;
+
+    overflow:hidden;
+
+    touch-action:none;
+
+}
+
+
+/* Tüm sahneler ekranı tamamen kaplasın */
+
+.scene{
+
+    width:100%;
+
+    height:100dvh;
+
+    min-height:100dvh;
+
+    overflow:hidden;
+
+}
+
+
+/* =========================================
+              IPAD / TABLET
+========================================= */
+
+@media (max-width:1024px){
+
+    /* Genel başlıklar */
+
+    #memoryTitle{
+
+        font-size:42px;
+
+        margin-bottom:45px;
+
+    }
+
+
+    /* Hafıza alanı */
+
+    #memoryContainer{
+
+        width:min(88vw,780px);
+
+        height:min(62vh,560px);
+
+    }
+
+
+    .memoryOrb{
+
+        width:60px;
+
+        height:60px;
+
+    }
+
+
+    /* Hafıza kartı */
+
+    #memoryCard{
+
+        width:min(76vw,650px);
+
+        max-height:78vh;
+
+        overflow-y:auto;
+
+        padding:25px;
+
+    }
+
+
+    #memoryText{
+
+        font-size:20px;
+
+    }
+
+
+    /* Kalp oyunu */
+
+    #heartPlayer{
+
+        width:80px;
+
+        height:80px;
+
+        font-size:70px;
+
+        bottom:25px;
+
+    }
+
+
+    #scoreBoard,
+    #goalBoard,
+    #timeBoard{
+
+        font-size:22px;
+
+    }
+
+
+    #scoreBoard{
+
+        left:22px;
+
+        top:20px;
+
+    }
+
+
+    #goalBoard{
+
+        left:22px;
+
+        top:58px;
+
+    }
+
+
+    #timeBoard{
+
+        right:22px;
+
+        top:20px;
+
+    }
+
+
+    /* Find Memories */
+
+    #findTitle{
+
+        font-size:44px;
+
+        top:25px;
+
+    }
+
+
+    #findTargets{
+
+        top:95px;
+
+        gap:20px;
+
+    }
+
+
+    #findTargets span{
+
+        font-size:30px;
+
+    }
+
+
+    .findObject{
+
+        font-size:45px;
+
+    }
+
+
+    /* Kaçan kalp oyunu */
+
+    #hugTitle{
+
+        font-size:42px;
+
+        top:30px;
+
+    }
+
+
+    #hugText{
+
+        top:95px;
+
+        font-size:30px;
+
+        padding:0 25px;
+
+        box-sizing:border-box;
+
+    }
+
+
+    #hugYou{
+
+        font-size:70px;
+
+    }
+
+
+    #hugYu{
+
+        font-size:68px;
+
+    }
+
+
+    /* Final */
+
+    #goodbyeTitle{
+
+        font-size:clamp(36px,6vw,58px);
+
+    }
+
+
+    #goodbyeMessage{
+
+        font-size:clamp(19px,3vw,25px);
+
+        padding:0 20px;
+
+        box-sizing:border-box;
+
+    }
+
+
+    #goodbyeFinal{
+
+        font-size:clamp(22px,3.5vw,32px);
+
+        padding:0 20px;
+
+        box-sizing:border-box;
+
+    }
+
+}
+
+
+/* =========================================
+              TELEFON
+========================================= */
+
+@media (max-width:600px){
+
+    /* Genel */
+
+    .scene{
+
+        height:100dvh;
+
+        min-height:100dvh;
+
+    }
+
+
+    /* Hafıza sahnesi */
+
+    #memoryTitle{
+
+        width:90%;
+
+        font-size:30px;
+
+        text-align:center;
+
+        letter-spacing:2px;
+
+        margin-bottom:20px;
+
+    }
+
+
+    #memoryContainer{
+
+        width:94vw;
+
+        height:65vh;
+
+    }
+
+
+    .memoryOrb{
+
+        width:46px;
+
+        height:46px;
+
+    }
+
+
+    #memoryCard{
+
+        width:88vw;
+
+        max-height:78vh;
+
+        padding:18px;
+
+        border-radius:20px;
+
+    }
+
+
+    #memoryText{
+
+        font-size:17px;
+
+        line-height:1.5;
+
+    }
+
+
+    #closeMemory{
+
+        margin-top:20px;
+
+        padding:13px 32px;
+
+        font-size:17px;
+
+    }
+
+
+    /* Kalp oyunu */
+
+    #heartPlayer{
+
+        width:65px;
+
+        height:65px;
+
+        font-size:58px;
+
+        bottom:18px;
+
+    }
+
+
+    #scoreBoard,
+    #goalBoard,
+    #timeBoard{
+
+        font-size:17px;
+
+    }
+
+
+    #scoreBoard{
+
+        left:14px;
+
+        top:15px;
+
+    }
+
+
+    #goalBoard{
+
+        left:14px;
+
+        top:45px;
+
+    }
+
+
+    #timeBoard{
+
+        right:14px;
+
+        top:15px;
+
+    }
+
+
+    .fallHeart{
+
+        font-size:32px;
+
+    }
+
+
+    /* Find Memories */
+
+    #findTitle{
+
+        width:90%;
+
+        top:18px;
+
+        font-size:30px;
+
+        text-align:center;
+
+    }
+
+
+    #findTargets{
+
+        top:68px;
+
+        width:90%;
+
+        justify-content:space-around;
+
+        gap:5px;
+
+        padding:8px 10px;
+
+    }
+
+
+    #findTargets span{
+
+        font-size:24px;
+
+    }
+
+
+    .findObject{
+
+        font-size:34px;
+
+    }
+
+
+    /* Kaçan kalp oyunu */
+
+    #hugTitle{
+
+        width:90%;
+
+        top:20px;
+
+        font-size:32px;
+
+        text-align:center;
+
+    }
+
+
+    #hugText{
+
+        width:92%;
+
+        top:72px;
+
+        font-size:23px;
+
+        line-height:1.3;
+
+        padding:0;
+
+    }
+
+
+    #hugYou{
+
+        font-size:58px;
+
+    }
+
+
+    #hugYu{
+
+        font-size:56px;
+
+    }
+
+
+    /* Final */
+
+    #goodbyeContent{
+
+        width:90%;
+
+        padding-bottom:55px;
+
+    }
+
+
+    #goodbyeTitle{
+
+        font-size:34px;
+
+    }
+
+
+    #goodbyeMessage{
+
+        margin-top:25px;
+
+        font-size:18px;
+
+        line-height:1.5;
+
+        padding:0;
+
+    }
+
+
+    #goodbyeFinal{
+
+        margin-top:35px;
+
+        font-size:21px;
+
+        line-height:1.4;
+
+        padding:0;
+
+    }
+
+
+    #madeBy{
+
+        bottom:18px;
+
+        font-size:17px;
+
+        padding:0 10px;
+
+        box-sizing:border-box;
+
+    }
+
+}
+/* HUG GAME - DOKUNMATİK KONTROL */
+
+#hugArea{
+
+    touch-action:none;
+
+    -webkit-touch-callout:none;
+
+    -webkit-user-select:none;
+
+    user-select:none;
+
+}
+#hugYou{
+
+    touch-action:none;
+
+    pointer-events:auto;
+
+    -webkit-user-drag:none;
+
+    user-select:none;
+
+}

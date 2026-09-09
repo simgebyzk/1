@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Journey To Yu</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- Background Canvas -->
+    <canvas id="bgCanvas"></canvas>
+
+    <div id="app">
+
+        <!-- ================================= -->
+        <!-- SCENE 1 -->
+        <!-- ================================= -->
+
+        <section id="scene1" class="scene active">
+
+            <div class="intro-container">
+
+                <div class="glow-circle"></div>
+
+                <h1 id="touchText">
+                    Touch the Universe
+                </h1>
+
+                <p id="subText">
+                    Every journey begins with one touch...
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- ================================= -->
+        <!-- SCENE 2 -->
+        <!-- ================================= -->
+
+        <section id="scene2" class="scene">
+
+            <div id="spaceGlow"></div>
+
+            <div id="nebula">
+
+    <div class="nebulaBlob n1"></div>
+
+    <div class="nebulaBlob n2"></div>
+
+    <div class="nebulaBlob n3"></div>
+
+</div>
+
+            <div id="planetSystem">
+
+                <div id="planetAura"></div>
+
+                <div class="planetRing ringBack"></div>
+
+                <div id="planet">
+
+    <div id="cloudLayer">
+
+    <div class="planetCloud c1"></div>
+    <div class="planetCloud c2"></div>
+    <div class="planetCloud c3"></div>
+    <div class="planetCloud c4"></div>
+    <div class="planetCloud c5"></div>
+    <div class="planetCloud c6"></div>
+    <div class="planetCloud c7"></div>
+    <div class="planetCloud c8"></div>
+
+</div>
+
+    <div class="planetHighlight"></div>
+
+</div>
+
+                <div class="planetRing ringFront"></div>
+
+            </div>
+
+            <div id="travelText">
+
+                <h1>The Journey Begins</h1>
+
+                <p>Follow the light...</p>
+
+            </div>
+
+            <div id="whiteFlash"></div>
+
+        </section>
+
+        <!-- ================================= -->
+        <!-- SCENE 3 -->
+        <!-- ================================= -->
+
+        <section id="scene3" class="scene">
+
+            <div id="memoryScene">
+
+                <h1 id="memoryTitle">
+                    Open Every Memory
+                </h1>
+
+                <div id="memoryContainer"></div>
+
+            </div>
+
+            <div id="memoryViewer">
+
+                <div id="memoryCard">
+
+                    <img id="memoryGif" src="">
+
+                    <p id="memoryText"></p>
+
+                    <button id="closeMemory">
+                        Continue
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ================================= -->
+        <!-- SCENE 4 -->
+        <!-- ================================= -->
+
+        <section id="scene4" class="scene">
+
+    <div id="heartGame">
+
+        <div id="scoreBoard">
+            ❤️ Score :
+            <span id="heartScore">0</span>
+        </div>
+
+        <div id="goalBoard">
+            🎯 Goal :
+            <span>40</span>
+        </div>
+
+        <div id="timeBoard">
+            ⏳
+            <span id="heartTimer">60</span>
+        </div>
+
+        <div id="heartContainer"></div>
+
+        <div id="heartPlayer"></div>
+
+    </div>
+
+</section>
+
+        <!-- ================================= -->
+        <!-- SCENE 5 -->
+        <!-- ================================= -->
+
+        <section id="scene5" class="scene">
+
+    <h1>❤️ You Win ❤️</h1>
+
+    <p>You collected enough love.</p>
+
+    <button id="nextGameBtn">
+        Continue
+    </button>
+
+</section>
+
+        <!-- ================================= -->
+        <!-- SCENE 6 -->
+        <!-- ================================= -->
+
+        <section id="scene6" class="scene">
+
+    <div id="findGame">
+
+        <h1 id="findTitle">
+            Find These Memories
+        </h1>
+
+        <div id="findTargets">
+
+            <span id="targetStar">⭐</span>
+            <span id="targetCat">🐱</span>
+            <span id="targetRose">🌹</span>
+            <span id="targetLetter">💌</span>
+            <span id="targetGame">🎮</span>
+
+        </div>
+
+        <div id="findArea">
+
+
+<div class="findNebula nebulaOne"></div>
+<div class="findNebula nebulaTwo"></div>
+
+<div class="findPlanet findPlanetOne"></div>
+<div class="findPlanet findPlanetTwo"></div>
+
+<div class="findMoon moonOne"></div>
+<div class="findMoon moonTwo"></div>
+
+<div class="findStarCluster clusterOne">✦ ✧ ✦ ✧</div>
+<div class="findStarCluster clusterTwo">✧ ✦ ✧ ✦</div>
+<div class="findStarCluster clusterThree">✦ ✧ ✦</div>
+
+<div class="findCloud cloudOne"></div>
+<div class="findCloud cloudTwo"></div>
+
+
+</div>
+
+
+    </div>
+
+</section>
+
+        <!-- ================================= -->
+        <!-- SCENE 7 -->
+        <!-- ================================= -->
+
+        <section id="scene7" class="scene">
+
+    <div id="hugGame">
+
+        <h1 id="hugTitle">
+            One Last Hug
+        </h1>
+
+        <p id="hugText">
+            Find your way to me 🤍
+        </p>
+
+        <div id="hugArea">
+
+           <div id="hugYou">💖</div>
+
+           <div id="hugYu">❤️</div> 
+
+        </div>
+
+    </div>
+
+</section>
+
+        <!-- ================================= -->
+        <!-- SCENE 8 -->
+        <!-- ================================= -->
+
+        <section id="scene8" class="scene">
+
+    <div id="goodbyeScene">
+
+        <div id="goodbyeStars"></div>
+
+        <div id="goodbyeContent">
+
+            <h1 id="goodbyeTitle">
+                Thank you for staying with me until the end.
+            </h1>
+
+            <p id="goodbyeMessage">
+                Every little moment in this universe was made for you.
+            </p>
+
+            <p id="goodbyeFinal">
+                See you in our next little universe, Yu
+            </p>
+
+        </div>
+
+        <p id="madeBy">
+            Made by Simge, for Yu 
+        </p>
+
+    </div>
+
+</section>
+
+        <!-- ================================= -->
+        <!-- SCENE 9 -->
+        <!-- ================================= -->
+
+        <section id="scene9" class="scene"></section>
+
+        <!-- ================================= -->
+        <!-- SCENE 10 -->
+        <!-- ================================= -->
+
+        <section id="scene10" class="scene"></section>
+
+        <!-- ================================= -->
+        <!-- COLLECT MY HEART -->
+        <!-- ================================= -->
+
+            <h1 id="collectTitle">
+                Collect My Heart
+            </h1>
+
+            <p id="collectSubtitle">
+                Can you collect every piece of my heart?
+            </p>
+
+            <div id="heartCounter">
+                ❤️ 0 / 25
+            </div>
+
+        </section>
+
+        <!-- ================================= -->
+        <!-- FIND ME -->
+        <!-- ================================= -->
+
+        <section id="findMeScene" class="scene"></section>
+
+    </div>
+
+    <script src="script.js"></script>
+
+    <script src="findMe.js"></script>
+
+    <script src="oneLastHug.js"></script>
+
+
+</body>
+
+</html>
